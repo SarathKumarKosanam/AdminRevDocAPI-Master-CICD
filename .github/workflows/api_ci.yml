@@ -48,10 +48,9 @@ jobs:
     - name: Compile Project Artifact
       run: mvn clean install -DskipTests -B
       
-    # Step 3: Execute ALL API Tests using the TestNG group filter
+    # Step 3: Execute ALL API Tests (Running Full Suite)
     - name: Execute API Tests (Running Full Suite)
-      # FIX: Removed -Dgroups=API filter since tests are not grouped. 
-      # Now executes all @Test methods found in testng.xml package definitions.
+      # FIX: Removed -Dgroups=API filter so all tests in testng.xml are executed.
       run: mvn test -B
       
     # Step 4: Publish Test Results 
@@ -61,7 +60,8 @@ jobs:
       with:
         name: API TestNG Results
         path: target/surefire-reports/*.xml 
-        reporter: maven-surefire 
+        # FIX: Changed 'maven-surefire' to the correct 'surefire' format expected by the action
+        reporter: surefire 
         fail-on-error: true 
         
     # Step 5: Upload Test Reports as an Artifact
