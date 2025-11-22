@@ -59,8 +59,14 @@
       <configuration>
         <source>17</source>
         <target>17</target>
-        <!-- FIX 1: REMOVED the complex compilerArgs block that caused the Fatal error compiling: java.lang.IllegalAccessError 
-             This error is often fixed by ensuring the IDE/local environment handles the module system cleanly. -->
+        <!-- FIX 1: Re-added compiler arguments to resolve the persistent java.lang.IllegalAccessError 
+             with Lombok on JDK 17 by explicitly allowing access to internal JDK APIs. -->
+        <compilerArgs>
+          <arg>--add-exports</arg>
+          <arg>jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
+          <arg>--add-exports</arg>
+          <arg>jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
+        </compilerArgs>
       </configuration>
     </plugin>
      <!-- CRITICAL: Maven Surefire Plugin: Executes TestNG tests (essential for 'mvn test') -->
