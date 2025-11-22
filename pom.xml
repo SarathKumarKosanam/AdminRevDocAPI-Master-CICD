@@ -15,27 +15,38 @@
   
   
     <dependencies>
-    <!-- TestNG: Scope removed, defaults to 'compile'. This is correct because BaseTest.java (in src/main/java) 
-         uses TestNG annotations like @BeforeSuite. -->
+    <!-- TestNG: Test Automation Framework -->
     <dependency>
         <groupId>org.testng</groupId>
         <artifactId>testng</artifactId>
         <version>7.10.2</version>
     </dependency>
 
-    <!-- Rest Assured: Scope removed, defaults to 'compile'. This is correct because BaseTest.java (in src/main/java) 
-         uses RestAssured (RestAssured.baseURI). -->
+    <!-- Rest Assured: API Testing Library -->
     <dependency>
         <groupId>io.rest-assured</groupId>
         <artifactId>rest-assured</artifactId>
         <version>5.3.0</version>
     </dependency>
 
-    <!-- ExtentReports: Already correct, defaults to 'compile' which is needed by ExtentManager in src/main/java. -->
+    <!-- ExtentReports: HTML Report Generation -->
     <dependency>
         <groupId>com.aventstack</groupId>
         <artifactId>extentreports</artifactId>
         <version>5.0.9</version>
+    </dependency>
+    
+    <!-- ADDED: Selenium Dependencies for UITest.java -->
+    <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>4.10.0</version>
+    </dependency>
+    <!-- WebDriver Manager: Manages browser driver binaries -->
+    <dependency>
+        <groupId>io.github.bonigarcia</groupId>
+        <artifactId>webdrivermanager</artifactId>
+        <version>5.5.3</version>
     </dependency>
 </dependencies>
 
@@ -48,6 +59,15 @@
       <configuration>
         <source>17</source>
         <target>17</target>
+        <!-- FIX: Add arguments for Lombok/JDK 17 compatibility -->
+        <compilerArgs>
+            <arg>--add-exports</arg>
+            <arg>jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
+            <arg>--add-exports</arg>
+            <arg>jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
+            <arg>--add-exports</arg>
+            <arg>jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
+        </compilerArgs>
       </configuration>
     </plugin>
      <!-- CRITICAL: Maven Surefire Plugin: Executes TestNG tests (essential for 'mvn test') -->
@@ -63,6 +83,17 @@
             <!-- Mandatory: Generate JUnit format reports for the CI reporter -->
             <reportFormat>plain</reportFormat>
             <trimStackTrace>false</trimStackTrace>
+        </configuration>
+    </plugin>
+    
+    <!-- ADDED: Maven Eclipse Plugin - Ensures IDE stability for the fixer script -->
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <version>2.10</version>
+        <configuration>
+            <downloadSources>true</downloadSources>
+            <downloadJavadocs>true</downloadJavadocs>
         </configuration>
     </plugin>
     
