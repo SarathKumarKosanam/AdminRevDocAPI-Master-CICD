@@ -2,3 +2,6 @@
 test-output/
 .classpath
 .project
+/target/
+/target/surefire-reports/
+/target/APITestReport.html

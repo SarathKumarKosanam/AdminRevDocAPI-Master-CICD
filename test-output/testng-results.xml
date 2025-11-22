@@ -2,20 +2,12 @@
 <testng-results ignored="0" total="5" passed="3" failed="2" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-26T12:43:19 IST" name="Default suite" finished-at="2025-10-26T12:43:33 IST" duration-ms="13514">
+  <suite started-at="2025-11-22T14:22:02 IST" name="Admin API Regression Suite" finished-at="2025-11-22T14:22:11 IST" duration-ms="9395">
     <groups>
     </groups>
-    <test started-at="2025-10-26T12:43:19 IST" name="Default test" finished-at="2025-10-26T12:43:33 IST" duration-ms="13514">
+    <test started-at="2025-11-22T14:22:02 IST" name="Admin Functional Tests - All Classes in Package" finished-at="2025-11-22T14:22:11 IST" duration-ms="9395">
       <class name="com.rev.admin.tests.VerifyProcedureUpdatePut">
-        <test-method is-config="true" signature="initReport()[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePut@3cd3e762]" started-at="2025-10-26T12:43:19 IST" name="initReport" finished-at="2025-10-26T12:43:19 IST" duration-ms="282" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- initReport -->
-        <test-method is-config="true" signature="setUpFrontTokeAndCookie()[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePut@3cd3e762]" started-at="2025-10-26T12:43:19 IST" name="setUpFrontTokeAndCookie" finished-at="2025-10-26T12:43:23 IST" duration-ms="3387" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUpFrontTokeAndCookie -->
-        <test-method is-config="true" signature="startExtentTest(java.lang.reflect.Method)[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePut@3cd3e762]" started-at="2025-10-26T12:43:23 IST" name="startExtentTest" finished-at="2025-10-26T12:43:23 IST" duration-ms="10" status="PASS">
+        <test-method is-config="true" signature="startExtentTest(java.lang.reflect.Method)[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePut@22555ebf]" started-at="2025-11-22T14:22:11 IST" name="startExtentTest" finished-at="2025-11-22T14:22:11 IST" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -26,7 +18,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startExtentTest -->
-        <test-method signature="procedureUpdatePut()[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePut@3cd3e762]" started-at="2025-10-26T12:43:23 IST" name="procedureUpdatePut" finished-at="2025-10-26T12:43:24 IST" duration-ms="830" status="FAIL">
+        <test-method signature="procedureUpdatePut()[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePut@22555ebf]" started-at="2025-11-22T14:22:11 IST" name="procedureUpdatePut" finished-at="2025-11-22T14:22:11 IST" duration-ms="935" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[Procedure patch failed (Status Code). expected [200] but found [404]]]>
@@ -40,8 +32,10 @@ at org.testng.Assert.assertEquals(Assert.java:132)
 at org.testng.Assert.assertEquals(Assert.java:1419)
 at org.testng.Assert.assertEquals(Assert.java:1383)
 at com.rev.admin.tests.VerifyProcedureUpdatePut.procedureUpdatePut(VerifyProcedureUpdatePut.java:25)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
 at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
 at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
@@ -50,7 +44,7 @@ at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInv
 at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
 at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
 at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 at org.testng.TestRunner.privateRun(TestRunner.java:739)
 at org.testng.TestRunner.run(TestRunner.java:614)
 at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
@@ -72,39 +66,20 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- procedureUpdatePut -->
-        <test-method is-config="true" signature="endExtentTest(org.testng.ITestResult)[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePut@3cd3e762]" started-at="2025-10-26T12:43:24 IST" name="endExtentTest" finished-at="2025-10-26T12:43:24 IST" duration-ms="3" status="PASS">
+        <test-method is-config="true" signature="endExtentTest(org.testng.ITestResult)[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePut@22555ebf]" started-at="2025-11-22T14:22:11 IST" name="endExtentTest" finished-at="2025-11-22T14:22:11 IST" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=procedureUpdatePut status=FAILURE method=VerifyProcedureUpdatePut.procedureUpdatePut()[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePut@3cd3e762] output={null}]]]>
+                <![CDATA[[TestResult name=procedureUpdatePut status=FAILURE method=VerifyProcedureUpdatePut.procedureUpdatePut()[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePut@22555ebf] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endExtentTest -->
-        <test-method is-config="true" signature="tearDownReport()[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePut@3cd3e762]" started-at="2025-10-26T12:43:33 IST" name="tearDownReport" finished-at="2025-10-26T12:43:33 IST" duration-ms="339" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDownReport -->
       </class> <!-- com.rev.admin.tests.VerifyProcedureUpdatePut -->
       <class name="com.rev.admin.tests.VerifyProcedureUpdatePatch">
-        <test-method is-config="true" signature="setUpFrontTokeAndCookie()[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePatch@6ed3ccb2]" started-at="2025-10-26T12:43:24 IST" name="setUpFrontTokeAndCookie" finished-at="2025-10-26T12:43:25 IST" duration-ms="1206" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUpFrontTokeAndCookie -->
-        <test-method is-config="true" signature="startExtentTest(java.lang.reflect.Method)[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePatch@6ed3ccb2]" started-at="2025-10-26T12:43:25 IST" name="startExtentTest" finished-at="2025-10-26T12:43:25 IST" duration-ms="1" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void com.rev.admin.tests.VerifyProcedureUpdatePatch.procedurePartialUpdatePatch()]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- startExtentTest -->
-        <test-method signature="procedurePartialUpdatePatch()[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePatch@6ed3ccb2]" started-at="2025-10-26T12:43:25 IST" name="procedurePartialUpdatePatch" finished-at="2025-10-26T12:43:25 IST" duration-ms="604" status="FAIL">
+        <test-method signature="procedurePartialUpdatePatch()[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePatch@292b08d6]" started-at="2025-11-22T14:22:08 IST" name="procedurePartialUpdatePatch" finished-at="2025-11-22T14:22:09 IST" duration-ms="995" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[Procedure partial update failed (Status Code). expected [200] but found [500]]]>
@@ -117,9 +92,11 @@ at org.testng.Assert.assertEqualsImpl(Assert.java:150)
 at org.testng.Assert.assertEquals(Assert.java:132)
 at org.testng.Assert.assertEquals(Assert.java:1419)
 at org.testng.Assert.assertEquals(Assert.java:1383)
-at com.rev.admin.tests.VerifyProcedureUpdatePatch.procedurePartialUpdatePatch(VerifyProcedureUpdatePatch.java:80)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at com.rev.admin.tests.VerifyProcedureUpdatePatch.procedurePartialUpdatePatch(VerifyProcedureUpdatePatch.java:79)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
 at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
 at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
@@ -128,7 +105,7 @@ at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInv
 at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
 at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
 at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 at org.testng.TestRunner.privateRun(TestRunner.java:739)
 at org.testng.TestRunner.run(TestRunner.java:614)
 at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
@@ -150,18 +127,29 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- procedurePartialUpdatePatch -->
-        <test-method is-config="true" signature="endExtentTest(org.testng.ITestResult)[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePatch@6ed3ccb2]" started-at="2025-10-26T12:43:25 IST" name="endExtentTest" finished-at="2025-10-26T12:43:25 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="startExtentTest(java.lang.reflect.Method)[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePatch@292b08d6]" started-at="2025-11-22T14:22:08 IST" name="startExtentTest" finished-at="2025-11-22T14:22:08 IST" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=procedurePartialUpdatePatch status=FAILURE method=VerifyProcedureUpdatePatch.procedurePartialUpdatePatch()[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePatch@6ed3ccb2] output={null}]]]>
+                <![CDATA[public void com.rev.admin.tests.VerifyProcedureUpdatePatch.procedurePartialUpdatePatch()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startExtentTest -->
+        <test-method is-config="true" signature="endExtentTest(org.testng.ITestResult)[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePatch@292b08d6]" started-at="2025-11-22T14:22:09 IST" name="endExtentTest" finished-at="2025-11-22T14:22:09 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=procedurePartialUpdatePatch status=FAILURE method=VerifyProcedureUpdatePatch.procedurePartialUpdatePatch()[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePatch@292b08d6] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endExtentTest -->
-        <test-method is-config="true" signature="startExtentTest(java.lang.reflect.Method)[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePatch@6ed3ccb2]" started-at="2025-10-26T12:43:25 IST" name="startExtentTest" finished-at="2025-10-26T12:43:25 IST" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="startExtentTest(java.lang.reflect.Method)[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePatch@292b08d6]" started-at="2025-11-22T14:22:09 IST" name="startExtentTest" finished-at="2025-11-22T14:22:09 IST" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -172,15 +160,15 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startExtentTest -->
-        <test-method signature="procedureUpdatePatch()[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePatch@6ed3ccb2]" started-at="2025-10-26T12:43:25 IST" name="procedureUpdatePatch" finished-at="2025-10-26T12:43:26 IST" duration-ms="877" status="PASS">
+        <test-method signature="procedureUpdatePatch()[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePatch@292b08d6]" started-at="2025-11-22T14:22:09 IST" name="procedureUpdatePatch" finished-at="2025-11-22T14:22:11 IST" duration-ms="1609" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- procedureUpdatePatch -->
-        <test-method is-config="true" signature="endExtentTest(org.testng.ITestResult)[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePatch@6ed3ccb2]" started-at="2025-10-26T12:43:26 IST" name="endExtentTest" finished-at="2025-10-26T12:43:26 IST" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="endExtentTest(org.testng.ITestResult)[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePatch@292b08d6]" started-at="2025-11-22T14:22:11 IST" name="endExtentTest" finished-at="2025-11-22T14:22:11 IST" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=procedureUpdatePatch status=SUCCESS method=VerifyProcedureUpdatePatch.procedureUpdatePatch()[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePatch@6ed3ccb2] output={null}]]]>
+                <![CDATA[[TestResult name=procedureUpdatePatch status=SUCCESS method=VerifyProcedureUpdatePatch.procedureUpdatePatch()[pri:0, instance:com.rev.admin.tests.VerifyProcedureUpdatePatch@292b08d6] output={null}]]]>
               </value>
             </param>
           </params>
@@ -189,11 +177,15 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
         </test-method> <!-- endExtentTest -->
       </class> <!-- com.rev.admin.tests.VerifyProcedureUpdatePatch -->
       <class name="com.rev.admin.tests.AdminLoginTest">
-        <test-method is-config="true" signature="setUpFrontTokeAndCookie()[pri:0, instance:com.rev.admin.tests.AdminLoginTest@1a677343]" started-at="2025-10-26T12:43:26 IST" name="setUpFrontTokeAndCookie" finished-at="2025-10-26T12:43:27 IST" duration-ms="983" status="PASS">
+        <test-method is-config="true" signature="initReport()[pri:0, instance:com.rev.admin.tests.AdminLoginTest@75d4a5c2]" started-at="2025-11-22T14:21:58 IST" name="initReport" finished-at="2025-11-22T14:21:59 IST" duration-ms="290" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initReport -->
+        <test-method is-config="true" signature="setUpFrontTokeAndCookie()[pri:0, instance:com.rev.admin.tests.AdminLoginTest@75d4a5c2]" started-at="2025-11-22T14:21:59 IST" name="setUpFrontTokeAndCookie" finished-at="2025-11-22T14:22:02 IST" duration-ms="3399" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpFrontTokeAndCookie -->
-        <test-method is-config="true" signature="startExtentTest(java.lang.reflect.Method)[pri:0, instance:com.rev.admin.tests.AdminLoginTest@1a677343]" started-at="2025-10-26T12:43:27 IST" name="startExtentTest" finished-at="2025-10-26T12:43:27 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="startExtentTest(java.lang.reflect.Method)[pri:0, instance:com.rev.admin.tests.AdminLoginTest@75d4a5c2]" started-at="2025-11-22T14:22:02 IST" name="startExtentTest" finished-at="2025-11-22T14:22:02 IST" duration-ms="6" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -204,28 +196,28 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startExtentTest -->
-        <test-method signature="adminLoginWithOtpTest()[pri:0, instance:com.rev.admin.tests.AdminLoginTest@1a677343]" started-at="2025-10-26T12:43:27 IST" name="adminLoginWithOtpTest" finished-at="2025-10-26T12:43:30 IST" duration-ms="3207" status="PASS">
+        <test-method signature="adminLoginWithOtpTest()[pri:0, instance:com.rev.admin.tests.AdminLoginTest@75d4a5c2]" started-at="2025-11-22T14:22:02 IST" name="adminLoginWithOtpTest" finished-at="2025-11-22T14:22:06 IST" duration-ms="4270" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- adminLoginWithOtpTest -->
-        <test-method is-config="true" signature="endExtentTest(org.testng.ITestResult)[pri:0, instance:com.rev.admin.tests.AdminLoginTest@1a677343]" started-at="2025-10-26T12:43:30 IST" name="endExtentTest" finished-at="2025-10-26T12:43:30 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="endExtentTest(org.testng.ITestResult)[pri:0, instance:com.rev.admin.tests.AdminLoginTest@75d4a5c2]" started-at="2025-11-22T14:22:06 IST" name="endExtentTest" finished-at="2025-11-22T14:22:06 IST" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=adminLoginWithOtpTest status=SUCCESS method=AdminLoginTest.adminLoginWithOtpTest()[pri:0, instance:com.rev.admin.tests.AdminLoginTest@1a677343] output={null}]]]>
+                <![CDATA[[TestResult name=adminLoginWithOtpTest status=SUCCESS method=AdminLoginTest.adminLoginWithOtpTest()[pri:0, instance:com.rev.admin.tests.AdminLoginTest@75d4a5c2] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endExtentTest -->
-      </class> <!-- com.rev.admin.tests.AdminLoginTest -->
-      <class name="com.rev.admin.tests.ProcedrueLoading">
-        <test-method is-config="true" signature="setUpFrontTokeAndCookie()[pri:0, instance:com.rev.admin.tests.ProcedrueLoading@15de0b3c]" started-at="2025-10-26T12:43:30 IST" name="setUpFrontTokeAndCookie" finished-at="2025-10-26T12:43:31 IST" duration-ms="897" status="PASS">
+        <test-method is-config="true" signature="tearDownReport()[pri:0, instance:com.rev.admin.tests.AdminLoginTest@75d4a5c2]" started-at="2025-11-22T14:22:12 IST" name="tearDownReport" finished-at="2025-11-22T14:22:12 IST" duration-ms="473" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setUpFrontTokeAndCookie -->
-        <test-method is-config="true" signature="startExtentTest(java.lang.reflect.Method)[pri:0, instance:com.rev.admin.tests.ProcedrueLoading@15de0b3c]" started-at="2025-10-26T12:43:31 IST" name="startExtentTest" finished-at="2025-10-26T12:43:31 IST" duration-ms="2" status="PASS">
+        </test-method> <!-- tearDownReport -->
+      </class> <!-- com.rev.admin.tests.AdminLoginTest -->
+      <class name="com.rev.admin.tests.ProcedrueLoading">
+        <test-method is-config="true" signature="startExtentTest(java.lang.reflect.Method)[pri:0, instance:com.rev.admin.tests.ProcedrueLoading@206a70ef]" started-at="2025-11-22T14:22:06 IST" name="startExtentTest" finished-at="2025-11-22T14:22:06 IST" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -236,15 +228,15 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startExtentTest -->
-        <test-method signature="procedureLoadingStatusCodeAndResposeVerification()[pri:0, instance:com.rev.admin.tests.ProcedrueLoading@15de0b3c]" started-at="2025-10-26T12:43:31 IST" name="procedureLoadingStatusCodeAndResposeVerification" finished-at="2025-10-26T12:43:33 IST" duration-ms="1413" status="PASS">
+        <test-method signature="procedureLoadingStatusCodeAndResposeVerification()[pri:0, instance:com.rev.admin.tests.ProcedrueLoading@206a70ef]" started-at="2025-11-22T14:22:06 IST" name="procedureLoadingStatusCodeAndResposeVerification" finished-at="2025-11-22T14:22:08 IST" duration-ms="1514" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- procedureLoadingStatusCodeAndResposeVerification -->
-        <test-method is-config="true" signature="endExtentTest(org.testng.ITestResult)[pri:0, instance:com.rev.admin.tests.ProcedrueLoading@15de0b3c]" started-at="2025-10-26T12:43:33 IST" name="endExtentTest" finished-at="2025-10-26T12:43:33 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="endExtentTest(org.testng.ITestResult)[pri:0, instance:com.rev.admin.tests.ProcedrueLoading@206a70ef]" started-at="2025-11-22T14:22:08 IST" name="endExtentTest" finished-at="2025-11-22T14:22:08 IST" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=procedureLoadingStatusCodeAndResposeVerification status=SUCCESS method=ProcedrueLoading.procedureLoadingStatusCodeAndResposeVerification()[pri:0, instance:com.rev.admin.tests.ProcedrueLoading@15de0b3c] output={null}]]]>
+                <![CDATA[[TestResult name=procedureLoadingStatusCodeAndResposeVerification status=SUCCESS method=ProcedrueLoading.procedureLoadingStatusCodeAndResposeVerification()[pri:0, instance:com.rev.admin.tests.ProcedrueLoading@206a70ef] output={null}]]]>
               </value>
             </param>
           </params>
@@ -252,6 +244,6 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </reporter-output>
         </test-method> <!-- endExtentTest -->
       </class> <!-- com.rev.admin.tests.ProcedrueLoading -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- Admin Functional Tests - All Classes in Package -->
+  </suite> <!-- Admin API Regression Suite -->
 </testng-results>

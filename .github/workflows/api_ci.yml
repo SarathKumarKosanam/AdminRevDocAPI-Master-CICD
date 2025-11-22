@@ -1,0 +1,73 @@
+# .github/workflows/api_ci.yml
+# This file defines the Continuous Integration workflow for your API Automation project.
+
+name: RestAssured API CI Suite
+
+on:
+  # 1. Automated Run: Triggers on every push or PR to main/master branches
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  
+  # 2. Manual Run: Allows you to manually trigger a run against a specific environment/URL from the GitHub UI.
+  workflow_dispatch:
+    inputs:
+      api_url:
+        description: 'Target API Base URL (Override Default)'
+        required: false
+        # The specified default base URL
+        default: 'https://api.stage.us-east-2.api.revdoc.link' 
+        type: string
+
+jobs:
+  execute_api_tests:
+    name: Execute RestAssured Tests
+    runs-on: ubuntu-latest
+    
+    # ----------------------------------------------------------------------------------
+    # Environment Variables (Injected into your Java Test Code)
+    # ----------------------------------------------------------------------------------
+    env:
+      # Sets the API URL which BaseTest.java will read via System.getenv("API_BASE_URL")
+      API_BASE_URL: ${{ github.event.inputs.api_url || 'https://api.stage.us-east-2.api.revdoc.link' }}
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    # Step 1: Setup Java environment
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven 
+
+    # Step 2: Compile the project artifacts (skip tests here)
+    - name: Compile Project Artifact
+      run: mvn clean install -DskipTests -B
+      
+    # Step 3: Execute ALL API Tests using the TestNG group filter
+    - name: Execute API Tests (Running Full Suite)
+      # FIX: Removed -Dgroups=API filter since tests are not grouped. 
+      # Now executes all @Test methods found in testng.xml package definitions.
+      run: mvn test -B
+      
+    # Step 4: Publish Test Results 
+    - name: Publish Test Results to GitHub
+      uses: dorny/test-reporter@v1
+      if: always() 
+      with:
+        name: API TestNG Results
+        path: target/surefire-reports/*.xml 
+        reporter: maven-surefire 
+        fail-on-error: true 
+        
+    # Step 5: Upload Test Reports as an Artifact
+    - name: Upload Test Reports Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: api-test-reports-artifact
+        path: target/surefire-reports
+        retention-days: 7

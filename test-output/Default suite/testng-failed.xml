@@ -3,26 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.rev.admin.tests.VerifyProcedureUpdatePut">
+      <class name="com.rev.admin.tests.ProcedrueLoading">
         <methods>
           <include name="startExtentTest"/>
+          <include name="procedureLoadingStatusCodeAndResponseVerification"/>
           <include name="setUpFrontTokeAndCookie"/>
           <include name="initReport"/>
-          <include name="procedureUpdatePut"/>
           <include name="tearDownReport"/>
           <include name="endExtentTest"/>
         </methods>
-      </class> <!-- com.rev.admin.tests.VerifyProcedureUpdatePut -->
-      <class name="com.rev.admin.tests.VerifyProcedureUpdatePatch">
-        <methods>
-          <include name="startExtentTest"/>
-          <include name="setUpFrontTokeAndCookie"/>
-          <include name="initReport"/>
-          <include name="procedurePartialUpdatePatch"/>
-          <include name="tearDownReport"/>
-          <include name="endExtentTest"/>
-        </methods>
-      </class> <!-- com.rev.admin.tests.VerifyProcedureUpdatePatch -->
+      </class> <!-- com.rev.admin.tests.ProcedrueLoading -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

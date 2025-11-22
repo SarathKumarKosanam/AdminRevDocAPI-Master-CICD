@@ -8,81 +8,19 @@
 <body>
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
-<tr><th colspan="8">Default suite</th></tr>
-<tr><td><a href="#t0">Default test</a></td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num attn">2</td><td class="num">13,514</td><td></td><td></td></tr>
+<tr><th colspan="8">Admin API Regression Suite</th></tr>
+<tr><td><a href="#t0">Admin Functional Tests - All Classes in Package</a></td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num attn">2</td><td class="num">9,395</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.rev.admin.tests.VerifyProcedureUpdatePatch</td><td><a href="#m0">procedurePartialUpdatePatch</a></td><td rowspan="1">1761462805266</td><td rowspan="1">604</td></tr><tr class="failedodd"><td rowspan="1">com.rev.admin.tests.VerifyProcedureUpdatePut</td><td><a href="#m1">procedureUpdatePut</a></td><td rowspan="1">1761462803206</td><td rowspan="1">830</td></tr><tr><th colspan="4">Default test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">com.rev.admin.tests.AdminLoginTest</td><td><a href="#m2">adminLoginWithOtpTest</a></td><td rowspan="1">1761462807753</td><td rowspan="1">3207</td></tr><tr class="passedodd"><td rowspan="1">com.rev.admin.tests.ProcedrueLoading</td><td><a href="#m3">procedureLoadingStatusCodeAndResposeVerification</a></td><td rowspan="1">1761462811864</td><td rowspan="1">1413</td></tr><tr class="passedeven"><td rowspan="1">com.rev.admin.tests.VerifyProcedureUpdatePatch</td><td><a href="#m4">procedureUpdatePatch</a></td><td rowspan="1">1761462805883</td><td rowspan="1">877</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Admin API Regression Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Admin Functional Tests - All Classes in Package &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.rev.admin.tests.VerifyProcedureUpdatePatch</td><td><a href="#m0">procedurePartialUpdatePatch</a></td><td rowspan="1">1763801528427</td><td rowspan="1">995</td></tr><tr class="failedodd"><td rowspan="1">com.rev.admin.tests.VerifyProcedureUpdatePut</td><td><a href="#m1">procedureUpdatePut</a></td><td rowspan="1">1763801531044</td><td rowspan="1">935</td></tr><tr><th colspan="4">Admin Functional Tests - All Classes in Package &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">com.rev.admin.tests.AdminLoginTest</td><td><a href="#m2">adminLoginWithOtpTest</a></td><td rowspan="1">1763801522631</td><td rowspan="1">4270</td></tr><tr class="passedodd"><td rowspan="1">com.rev.admin.tests.ProcedrueLoading</td><td><a href="#m3">procedureLoadingStatusCodeAndResposeVerification</a></td><td rowspan="1">1763801526909</td><td rowspan="1">1514</td></tr><tr class="passedeven"><td rowspan="1">com.rev.admin.tests.VerifyProcedureUpdatePatch</td><td><a href="#m4">procedureUpdatePatch</a></td><td rowspan="1">1763801529428</td><td rowspan="1">1609</td></tr></tbody>
 </table>
-<h2>Default test</h2><h3 id="m0">com.rev.admin.tests.VerifyProcedureUpdatePatch#procedurePartialUpdatePatch</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Procedure partial update failed (Status Code). expected [200] but found [500]
-	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1578)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-	at org.testng.Assert.assertEquals(Assert.java:132)
-	at org.testng.Assert.assertEquals(Assert.java:1419)
-	at org.testng.Assert.assertEquals(Assert.java:1383)
-	at com.rev.admin.tests.VerifyProcedureUpdatePatch.procedurePartialUpdatePatch(VerifyProcedureUpdatePatch.java:80)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Admin Functional Tests - All Classes in Package</h2><h3 id="m0">com.rev.admin.tests.VerifyProcedureUpdatePatch#procedurePartialUpdatePatch</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Procedure partial update failed (Status Code). expected [200] but found [500]
+	at com.rev.admin.tests.VerifyProcedureUpdatePatch.procedurePartialUpdatePatch(VerifyProcedureUpdatePatch.java:79)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 33 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 <h3 id="m1">com.rev.admin.tests.VerifyProcedureUpdatePut#procedureUpdatePut</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Procedure patch failed (Status Code). expected [200] but found [404]
-	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1578)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-	at org.testng.Assert.assertEquals(Assert.java:132)
-	at org.testng.Assert.assertEquals(Assert.java:1419)
-	at org.testng.Assert.assertEquals(Assert.java:1383)
 	at com.rev.admin.tests.VerifyProcedureUpdatePut.procedureUpdatePut(VerifyProcedureUpdatePut.java:25)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 33 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 <h3 id="m2">com.rev.admin.tests.AdminLoginTest#adminLoginWithOtpTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 <h3 id="m3">com.rev.admin.tests.ProcedrueLoading#procedureLoadingStatusCodeAndResposeVerification</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 <h3 id="m4">com.rev.admin.tests.VerifyProcedureUpdatePatch#procedureUpdatePatch</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>

@@ -27,6 +27,13 @@ import org.testng.annotations.Test; // Added Test annotation import
 
 public class BaseTest {
 	
+    
+    // CRITICAL: Reads the environment variable set by the GitHub workflow
+    // This allows the CI pipeline to inject the target URL (e.g., https://api.stage.us-east-2.api.revdoc.link)
+    protected static final String API_BASE_URL = System.getenv("API_BASE_URL") != null ? 
+                                               System.getenv("API_BASE_URL") : 
+                                               null; // Keep null here to enforce fallback to ConfigReader
+	
 	public String FrontToken;
 	public static String Cookie;
 
@@ -54,12 +61,22 @@ System.out.println("✅ Extent Report initialized successfully");
 // 🔹 RestAssured setup (runs before every test class)
  @BeforeSuite
 public void setUpFrontTokeAndCookie() {
-// 1. Set Base URI once
-//  RestAssured.baseURI = ConfigReader.get("baseUrl");
+	    String baseUrl;
+	    
+	    // 1. Set Base URI dynamically: Use CI/CD variable if present, otherwise fall back to ConfigReader
+	    if (API_BASE_URL != null) {
+	        baseUrl = API_BASE_URL;
+	        System.out.println("Using CI/CD Environment Variable Base URL: " + baseUrl);
+	    } else {
+	        // Fallback for local execution, reads from config.properties
+	        baseUrl = ConfigReader.get("baseUrl"); 
+	        System.out.println("Using Local ConfigReader Base URL: " + baseUrl);
+	    }
+	    RestAssured.baseURI = baseUrl;
 
 // 2. RUN FULL AUTH FLOW AND GET FINAL COOKIE/TOKEN
 // This single call triggers the 3-step login if not yet done.
-String[] Tokens = TokenManager.loginWithEmailAndPassword();
+String[] Tokens = TokenManager.loginWithEmailAndPassword(RestAssured.baseURI);
 
 this.FrontToken = Tokens[0];
 Cookie = "sAccessToken="+Tokens[1];

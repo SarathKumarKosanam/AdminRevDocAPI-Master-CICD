@@ -28,12 +28,12 @@ public class TokenManager {
 
 
     // Step 1: Login with Email and Password
-    public static String[] loginWithEmailAndPassword() {
+    public static String[] loginWithEmailAndPassword(String baseUrl) {
         String loginBody = ConfigReader.get("LoginBody");
 
         System.out.println("Initiating login (Step 1)...");
         Response response = RestAssured.given()
-            .baseUri(ConfigReader.get("baseUrl"))
+            .baseUri(baseUrl)
             .basePath(AdminEndpoints.LOGIN)
             .header("Accept", "application/json")
             .contentType(ContentType.JSON)
@@ -64,52 +64,4 @@ public class TokenManager {
         return new String [] {sessionFrontToken,sessionCookie};
     }
     
-    // Step 2 & 3: Logic for OTP Flow
-   /* private static void completeOtpFlow() {
-        
-        // CRITICAL WARNING/CHECK for Phone Number "null" issue
-        if (ADMIN_PHONE == null || ADMIN_PHONE.equalsIgnoreCase("null")) {
-            System.err.println("❌ CRITICAL: ADMIN_PHONE is reading as NULL or 'null' from config. Please set a valid phone number in your configuration file. Proceeding with 'null' in the request body.");
-            // FIX: Removed the RuntimeException here to allow the test to proceed
-        }
-
-        // --- Step 2: Request Code Challenge ---
-        System.out.println("Initiating code challenge request (Step 2)...");
-        
-        // Pass the Front-Token as a header for authentication
-        Response codeResponse = AdminActions.requestCodeChallenge(sessionTokenForOtpFlow, ADMIN_PHONE);
-
-        // FIX: Use the exact snake_case keys from the Step 2 response (pre_auth_session_id, code_id)
-        String preAuthSessionId = codeResponse.jsonPath().getString("pre_auth_session_id");
-        String codeId = codeResponse.jsonPath().getString("code_id");
-        
-        if (preAuthSessionId == null || codeId == null) {
-            // This check ensures we have the necessary IDs for Step 3
-            throw new RuntimeException("OTP Challenge failed (Step 2). Required IDs missing in 200 OK Response: " + codeResponse.getBody().asString());
-        }
-        
-        System.out.println("✅ Extracted preAuthSessionId: " + preAuthSessionId.substring(0, 8) + "...");
-        System.out.println("✅ Extracted codeId: " + codeId.substring(0, 8) + "...");
-        
-        // --- Step 3: Verify OTP ---
-        System.out.println("Initiating OTP verification (Step 3)...");
-        
-        Response finalResponse = AdminActions.verifyOtp(
-            sessionTokenForOtpFlow, // Use the Front-Token for authentication
-            preAuthSessionId, 
-            codeId, 
-            TEMP_DEVICE_ID,
-            ADMIN_PHONE, 
-            TEMP_OTP
-        );
-        
-        // Final token is the St-Access-Token header from the final response
-        finalSAccessToken = finalResponse.header(getFinalAccessTokenKey());
-
-        if (finalSAccessToken != null) {
-             System.out.println("✅ Full multi-step login flow completed successfully. Final St-Access-Token retrieved.");
-        } else {
-             throw new RuntimeException("Failed to retrieve final access token after OTP verification. Response Body: " + finalResponse.getBody().asString());
-        }
-    }*/
 }
