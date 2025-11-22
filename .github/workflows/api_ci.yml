@@ -50,19 +50,19 @@ jobs:
       
     # Step 3: Execute ALL API Tests (Running Full Suite)
     - name: Execute API Tests (Running Full Suite)
-      # FIX: Removed -Dgroups=API filter so all tests in testng.xml are executed.
+      # Execution will now proceed cleanly thanks to the pom.xml update
       run: mvn test -B
       
     # Step 4: Publish Test Results 
     - name: Publish Test Results to GitHub
-      uses: dorny/test-reporter@v1
+      # FIX 1: Using the stable v1.7.0 version of the action
+      uses: dorny/test-reporter@v1.7.0 
       if: always() 
       with:
         name: API TestNG Results
         path: target/surefire-reports/*.xml 
-        # FIX: Changed 'surefire' to 'junit' to resolve the input variable error, 
-        # as Surefire reports follow the JUnit XML schema.
-        reporter: junit 
+        # FIX 2: Using 'surefire' reporter type which is supported by this action
+        reporter: surefire 
         fail-on-error: true 
         
     # Step 5: Upload Test Reports as an Artifact
