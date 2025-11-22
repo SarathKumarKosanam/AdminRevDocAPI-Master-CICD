@@ -60,8 +60,9 @@ jobs:
       with:
         name: API TestNG Results
         path: target/surefire-reports/*.xml 
-        # FIX: Changed 'maven-surefire' to the correct 'surefire' format expected by the action
-        reporter: surefire 
+        # FIX: Changed 'surefire' to 'junit' to resolve the input variable error, 
+        # as Surefire reports follow the JUnit XML schema.
+        reporter: junit 
         fail-on-error: true 
         
     # Step 5: Upload Test Reports as an Artifact
