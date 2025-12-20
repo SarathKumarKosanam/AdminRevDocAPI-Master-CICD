@@ -59,7 +59,17 @@ jobs:
         run: mvn test -B -Dapi.base.url=${{ env.API_BASE_URL }}
         continue-on-error: true
 
-      # 1. Dashboard Summary (The quick table in GitHub UI)
+      # 1. Rename the Timestamped report to index.html
+      # This ensures the GitHub Pages link opens the most recent report automatically.
+      - name: Prepare HTML Report for Deployment
+        if: always()
+        run: |
+          # Find the newest .html file in the target folder and copy it to index.html
+          latest_report=$(ls -t target/*.html | head -1)
+          cp "$latest_report" target/index.html
+          echo "Published $latest_report as index.html"
+
+      # 2. Dashboard Summary (The quick table in GitHub UI)
       - name: Publish Test Results Summary
         uses: dorny/test-reporter@v1
         if: always()
@@ -68,19 +78,19 @@ jobs:
           path: 'target/surefire-reports/junitreports/TEST-*.xml'
           reporter: java-junit
 
-      # 2. Prepare HTML for Web Hosting (The "Pretty" report)
+      # 3. Prepare HTML for Web Hosting
       - name: Upload Pages Artifact
         if: always()
         uses: actions/upload-pages-artifact@v3
         with:
-          # This points to the folder containing your HTML files
-          path: 'target/surefire-reports/'
+          # Points to the folder where we just created index.html
+          path: 'target/'
 
-  # NEW JOB: This actually publishes the website link
   deploy_report:
     name: Deploy Full HTML Report
     needs: execute_api_tests
-    if: always()
+    # Only deploy to pages when running on the main branch to avoid security errors
+    if: always() && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
