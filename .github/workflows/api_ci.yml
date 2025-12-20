@@ -62,9 +62,9 @@ jobs:
         uses: dorny/test-reporter@v1
         if: always()
         with:
-          name: API TestNG Results
-          path: target/surefire-reports/testng-results.xml
-          reporter: java-testng
+          name: API Test Results Summary
+          path: 'target/surefire-reports/junitreports/TEST-*.xml'
+          reporter: java-junit
           fail-on-error: true
 
       - name: Upload Test Reports as an Artifact
