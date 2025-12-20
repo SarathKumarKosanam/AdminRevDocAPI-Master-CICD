@@ -69,8 +69,8 @@ jobs:
       with:
         name: API TestNG Results
         path: target/surefire-reports/*.xml 
-        reporter: maven-surefire 
-        
+        reporter: java-testng 
+		fail-on-error: true
     - name: Upload Test Reports as an Artifact
       if: always()
       uses: actions/upload-artifact@v4
