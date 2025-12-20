@@ -38,6 +38,10 @@ jobs:
     name: Execute RestAssured Tests
     needs: build_verification
     runs-on: ubuntu-latest
+	permissions:
+	  checks: write
+	  pull-requests: write
+	  contents: read
     env:
       API_BASE_URL: ${{ github.event.inputs.api_url || secrets.STAGE_API_URL || 'https://api.stage.us-east-2.api.revdoc.link' }}
       AUTH_TOKEN: ${{ secrets.API_BEARER_TOKEN }}
