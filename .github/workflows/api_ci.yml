@@ -59,11 +59,11 @@ jobs:
 
       # CONCEPT 7: OBSERVABILITY & REPORTING
       - name: Publish Test Results to GitHub
-        uses: dorny/test-reporter@v1.9.1
+        uses: dorny/test-reporter@v1
         if: always()
         with:
           name: API TestNG Results
-          path: target/surefire-reports/*.xml
+          path: target/surefire-reports/testng-results.xml
           reporter: java-testng
           fail-on-error: true
 
