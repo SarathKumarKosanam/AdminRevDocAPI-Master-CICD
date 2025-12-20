@@ -12,7 +12,6 @@ on:
         default: 'https://api.stage.us-east-2.api.revdoc.link'
         type: string
 
-# Permissions required for Test Reporting and GitHub Pages hosting
 permissions:
   contents: read
   pages: write
@@ -27,21 +26,34 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-      - name: Compile
-        run: mvn clean compile -DskipTests
+
+      # CONCEPT: Advanced Caching for Maven Dependencies
+      - name: Cache Maven packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Compile & Build Image
+        run: |
+          mvn clean compile -DskipTests
+          docker build -t api-automation-suite:${{ github.sha }} .
 
   execute_api_tests:
-    name: Run on ${{ matrix.os }}
+    name: Test on ${{ matrix.os }}
     needs: build_verification
-    # MATRIX TOPIC: This triggers 3 parallel runs across different OS environments
+    # MATRIX TOPIC: Running tests in parallel on 3 different Operating Systems
     strategy:
-      fail-fast: false # Ensures all OS finish even if one fails
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
     
@@ -62,12 +74,21 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
+      # RESTORE CACHE: Speeds up the Matrix runners by reusing downloaded JARs
+      - name: Restore Maven Cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
       - name: Execute API Tests
         run: mvn test -B -Dapi.base.url=${{ env.API_BASE_URL }}
         continue-on-error: true
 
-      # This ensures the pretty HTML report is renamed to index.html on every OS
-      - name: Prepare HTML Report
+      # COMPATIBILITY FIX: Use 'bash' shell to ensure 'ls' and 'cp' work on Windows runners
+      - name: Prepare HTML Report for Deployment
         if: always()
         shell: bash
         run: |
@@ -75,7 +96,6 @@ jobs:
           cp "$latest_report" target/index.html
           echo "Published $latest_report as index.html"
 
-      # Existing Summary Table for GitHub UI
       - name: Publish Test Results Summary
         uses: dorny/test-reporter@v1
         if: always()
@@ -84,8 +104,8 @@ jobs:
           path: 'target/surefire-reports/junitreports/TEST-*.xml'
           reporter: java-junit
 
-      # IMPORTANT: We only upload the artifact from ONE OS (Ubuntu) 
-      # to prevent the 3 jobs from overwriting the live website.
+      # SAFETY CHECK: Only upload the artifact from one runner (Ubuntu) to GitHub Pages
+      # This prevents the 3 parallel OS runs from failing or overwriting each other.
       - name: Upload Pages Artifact
         if: always() && matrix.os == 'ubuntu-latest'
         uses: actions/upload-pages-artifact@v3
@@ -95,7 +115,6 @@ jobs:
   deploy_report:
     name: Deploy Full HTML Report
     needs: execute_api_tests
-    # Only deploys to the live URL when code is merged to main
     if: always() && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment:
