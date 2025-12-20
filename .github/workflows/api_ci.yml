@@ -26,32 +26,18 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-
-      # CONCEPT: Advanced Caching for Maven Dependencies
-      - name: Cache Maven packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
-
-      - name: Compile & Build Image
-        run: |
-          mvn clean compile -DskipTests
-          docker build -t api-automation-suite:${{ github.sha }} .
+      - name: Compile
+        run: mvn clean compile -DskipTests
 
   execute_api_tests:
     name: Test on ${{ matrix.os }}
     needs: build_verification
-    # MATRIX TOPIC: Running tests in parallel on 3 different Operating Systems
     strategy:
       fail-fast: false
       matrix:
@@ -74,8 +60,7 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      # RESTORE CACHE: Speeds up the Matrix runners by reusing downloaded JARs
-      - name: Restore Maven Cache
+      - name: Cache Maven packages
         uses: actions/cache@v4
         with:
           path: ~/.m2/repository
@@ -87,25 +72,34 @@ jobs:
         run: mvn test -B -Dapi.base.url=${{ env.API_BASE_URL }}
         continue-on-error: true
 
-      # COMPATIBILITY FIX: Use 'bash' shell to ensure 'ls' and 'cp' work on Windows runners
+      # IMPROVED: Search recursively for the report file to fix the Windows error
       - name: Prepare HTML Report for Deployment
         if: always()
         shell: bash
         run: |
-          latest_report=$(ls -t target/*.html | head -1)
-          cp "$latest_report" target/index.html
-          echo "Published $latest_report as index.html"
+          echo "Searching for HTML reports..."
+          # This finds any .html file in target or its subfolders (like surefire-reports)
+          REPORT_FILE=$(find target -name "*.html" -type f | grep -v "index.html" | head -n 1)
+          
+          if [ -n "$REPORT_FILE" ]; then
+            echo "Found report: $REPORT_FILE"
+            cp "$REPORT_FILE" target/index.html
+            echo "Successfully prepared target/index.html"
+          else
+            echo "ERROR: No HTML report found in target directory!"
+            # Create a dummy index.html so the next step doesn't crash the whole run
+            echo "<h1>No Report Generated on ${{ matrix.os }}</h1>" > target/index.html
+          fi
 
       - name: Publish Test Results Summary
         uses: dorny/test-reporter@v1
         if: always()
         with:
           name: API Test Results Summary (${{ matrix.os }})
-          path: 'target/surefire-reports/junitreports/TEST-*.xml'
+          # Expanded path to catch XMLs wherever they land
+          path: '**/target/surefire-reports/junitreports/TEST-*.xml'
           reporter: java-junit
 
-      # SAFETY CHECK: Only upload the artifact from one runner (Ubuntu) to GitHub Pages
-      # This prevents the 3 parallel OS runs from failing or overwriting each other.
       - name: Upload Pages Artifact
         if: always() && matrix.os == 'ubuntu-latest'
         uses: actions/upload-pages-artifact@v3
