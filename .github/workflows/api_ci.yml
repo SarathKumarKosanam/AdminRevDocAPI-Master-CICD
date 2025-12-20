@@ -63,21 +63,15 @@ jobs:
       continue-on-error: true 
       
     # CONCEPT 7: OBSERVABILITY & REPORTING
-    - name: Publish Test Results to GitHub
-      uses: dorny/test-reporter@v1.7.0 
-      if: always() 
-      with:
-        name: API TestNG Results
-        path: target/surefire-reports/*.xml 
-<<<<<<< HEAD
-		# FIXED: Use 'java-testng' instead of 'maven-surefire'
-		reporter: java-testng 
-		fail-on-error: true
-        
-=======
-        reporter: java-testng 
-		fail-on-error: true
->>>>>>> 1ce9baf780b16f033e5f34c987df17751898eb57
+	# Step 4: Publish Test Results 
+	    - name: Publish Test Results to GitHub
+	      uses: dorny/test-reporter@v1.9.1
+	      if: always() 
+	      with:
+	        name: API TestNG Results
+	        path: target/surefire-reports/*.xml 
+	        reporter: java-testng
+	        fail-on-error: true
     - name: Upload Test Reports as an Artifact
       if: always()
       uses: actions/upload-artifact@v4
