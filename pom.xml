@@ -1,104 +1,79 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.revdoc.adminapi</groupId>
-  <artifactId>revdoc-adminapi</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>rest-assured-api-tests</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
     <properties>
-      <!-- CRITICAL: Set Java version properties for consistent compilation (Java 17) -->
-      <maven.compiler.source>17</maven.compiler.source>
-      <maven.compiler.target>17</maven.compiler.target>
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-  
-  
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <rest-assured.version>5.4.0</rest-assured.version>
+        <testng.version>7.10.1</testng.version>
+        <lombok.version>1.18.30</lombok.version>
+    </properties>
+
     <dependencies>
-    <!-- TestNG: Test Automation Framework -->
-    <dependency>
-        <groupId>org.testng</groupId>
-        <artifactId>testng</artifactId>
-        <version>7.10.2</version>
-    </dependency>
+        <!-- Rest Assured -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
+        </dependency>
 
-    <!-- Rest Assured: API Testing Library -->
-    <dependency>
-        <groupId>io.rest-assured</groupId>
-        <artifactId>rest-assured</artifactId>
-        <version>5.3.0</version>
-    </dependency>
+        <!-- TestNG -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
 
-    <!-- ExtentReports: HTML Report Generation -->
-    <dependency>
-        <groupId>com.aventstack</groupId>
-        <artifactId>extentreports</artifactId>
-        <version>5.0.9</version>
-    </dependency>
-    
-    <!-- ADDED: Selenium Dependencies for UITest.java -->
-    <dependency>
-        <groupId>org.seleniumhq.selenium</groupId>
-        <artifactId>selenium-java</artifactId>
-        <version>4.10.0</version>
-    </dependency>
-    <!-- WebDriver Manager: Manages browser driver binaries -->
-    <dependency>
-        <groupId>io.github.bonigarcia</groupId>
-        <artifactId>webdrivermanager</artifactId>
-        <version>5.5.3</version>
-    </dependency>
-</dependencies>
-
-<build>
-  <plugins>
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-compiler-plugin</artifactId>
-      <version>3.11.0</version>
-      <configuration>
-        <source>17</source>
-        <target>17</target>
-        <!-- FIX 1: Re-added compiler arguments to resolve the persistent java.lang.IllegalAccessError 
-             with Lombok on JDK 17 by explicitly allowing access to internal JDK APIs. -->
-        <compilerArgs>
-          <arg>--add-exports</arg>
-          <arg>jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
-          <arg>--add-exports</arg>
-          <arg>jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
-        </compilerArgs>
-      </configuration>
-    </plugin>
-     <!-- CRITICAL: Maven Surefire Plugin: Executes TestNG tests (essential for 'mvn test') -->
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.1.2</version>
-        <configuration>
-            <!-- Points Maven to the testng.xml file for execution -->
-            <suiteXmlFiles>
-                <suiteXmlFile>testng.xml</suiteXmlFile>
-            </suiteXmlFiles>
-            <!-- Mandatory: Generate JUnit format reports for the CI reporter -->
-            <reportFormat>plain</reportFormat>
-            <trimStackTrace>false</trimStackTrace>
-        </configuration>
-    </plugin>
-    
-    <!-- ADDED: Maven Eclipse Plugin - Ensures IDE stability for the fixer script -->
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-eclipse-plugin</artifactId>
-        <version>2.10</version>
-        <configuration>
-            <downloadSources>true</downloadSources>
-            <downloadJavadocs>true</downloadJavadocs>
-        </configuration>
-    </plugin>
-    
-  </plugins>
-</build>
+        <!-- Lombok for cleaner code (Getters, Setters, etc.) -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        
+        <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+<dependency>
+    <groupId>com.aventstack</groupId>
+    <artifactId>extentreports</artifactId>
+    <version>5.0.9</version>
+</dependency>
 
 
-  
+        
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- FIX FOR JDK 17 / LOMBOK COMPILATION ERROR -->
+            <!-- This configuration is REQUIRED for Lombok to work with JDK 17+ 
+                 by explicitly telling the compiler how to load the annotation processor. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
