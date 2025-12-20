@@ -64,14 +64,14 @@ jobs:
       
     # CONCEPT 7: OBSERVABILITY & REPORTING
 	# Step 4: Publish Test Results 
-	    - name: Publish Test Results to GitHub
-	      uses: dorny/test-reporter@v1.9.1
-	      if: always() 
-	      with:
-	        name: API TestNG Results
-	        path: target/surefire-reports/*.xml 
-	        reporter: java-testng
-	        fail-on-error: true
+	- name: Publish Test Results to GitHub
+	  uses: dorny/test-reporter@v1.9.1
+	  if: always() 
+	  with:
+	    name: API TestNG Results
+	    path: target/surefire-reports/*.xml 
+	    reporter: java-testng
+	    fail-on-error: true
     - name: Upload Test Reports as an Artifact
       if: always()
       uses: actions/upload-artifact@v4
